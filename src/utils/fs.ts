@@ -1,23 +1,22 @@
-import fs from "fs";
+import { readFileSync, readdirSync, statSync } from "fs";
 import path from "path";
 
-export function readTarget(targetPath: string): string {
-  const resolved = path.resolve(targetPath);
-
-  if (!fs.existsSync(resolved)) {
-    throw new Error(`Path does not exist: ${targetPath}`);
+export function readTarget(filePath: string): string {
+  try {
+    return readFileSync(filePath, "utf-8");
+  } catch {
+    return ""; // return empty string if file doesn't exist
   }
+}
 
-  const stat = fs.statSync(resolved);
-
-  if (stat.isFile()) {
-    return fs.readFileSync(resolved, "utf-8");
+export function listDirectory(dirPath: string): string[] {
+  try {
+    return readdirSync(dirPath).map((f) => {
+      const fullPath = path.join(dirPath, f);
+      const stats = statSync(fullPath);
+      return stats.isDirectory() ? f + "/" : f;
+    });
+  } catch {
+    return [];
   }
-
-  if (stat.isDirectory()) {
-    const files = fs.readdirSync(resolved);
-    return `Directory contains:\n${files.join("\n")}`;
-  }
-
-  throw new Error("Unsupported file type");
 }

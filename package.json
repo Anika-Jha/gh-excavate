@@ -1,19 +1,31 @@
 {
   "name": "gh-excavate",
-  "version": "1.0.0",
-  "main": "index.js",
+  "version": "0.1.0",
+  "description": "Excavate the history and intent behind any line of code",
+  "type": "module",
+  "bin": {
+    "gh-excavate": "dist/gh-excavate.js"
+  },
+  "main": "dist/gh-excavate.js",
   "scripts": {
     "build": "tsc",
-    "dev": "ts-node src/index.ts",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "dev": "ts-node src/gh-excavate.ts",
+    "prepare": "npm run build",
+    "test": "echo \"No tests yet\""
   },
-  "keywords": [],
+  "keywords": [
+    "github-cli",
+    "copilot",
+    "code-analysis",
+    "git-history",
+    "developer-tools"
+  ],
   "author": "",
-  "license": "ISC",
-  "description": "",
+  "license": "MIT",
   "dependencies": {
     "commander": "^14.0.3",
     "execa": "^9.6.1",
+    "ora": "^9.3.0",
     "simple-git": "^3.30.0"
   },
   "devDependencies": {
@@ -21,5 +33,4 @@
     "ts-node": "^10.9.2",
     "typescript": "^5.9.3"
   }
-  
 }
