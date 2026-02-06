@@ -1,6 +1,6 @@
 # gh-excavate
 
-**Understand any codebase you didn’t write — quickly.**
+**Understand any codebase you didn’t write, quickly.**
 
 `gh-excavate` is a TypeScript-based CLI tool that helps developers analyze both local and remote code repositories. Using **GitHub Copilot**, it performs "code archaeology" by inspecting files, folders, or entire repos to uncover the **intent, history, design decisions, and potential risks** behind the code.
 
