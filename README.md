@@ -44,6 +44,8 @@ gh extension install .
 ```bash
 gh excavate --help
 ```
+<img width="785" height="247" alt="gh_help " src="https://github.com/user-attachments/assets/9102746d-e6d6-4f34-8b81-2f8fcec87537" />
+
 ---
 
 ## Usage
