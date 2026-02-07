@@ -87,7 +87,7 @@ program
       content += readSourceFiles(targetPath);
 
       if (!content.trim()) {
-        console.log(" No readable files found in target path.");
+        console.log("⚠️ No readable files found in target path.");
         return;
       }
 
@@ -139,7 +139,7 @@ program
         return;
       }
 
-      console.log("Verdict: ❌ LIKELY DEAD");
+      console.log("Verdict:  LIKELY DEAD");
       console.log("Confidence: 30%\n");
       console.log("- No imports or references found");
       console.log("- Never modified since creation");
@@ -169,23 +169,23 @@ program
       const result = await analyzeRelic(path);
 
       if (result.status === "never-tracked") {
-        console.log(" File was never committed to git.");
-        console.log(" Commit it once to begin its archaeological record.");
+        console.log("File was never committed to git.");
+        console.log("Commit it once to begin its archaeological record.");
         return;
       }
 
       if (!result.firstSeen) {
-        console.log(" File history is incomplete.");
+        console.log("⚠️ File history is incomplete.");
         return;
       }
 
       const lastDate = result.lastSeen?.date ?? "present";
 
-      console.log(`Status: ${result.status === "alive" ? " Alive" : " Deleted"}`);
+      console.log(`Status: ${result.status === "alive" ? "Alive" : "Deleted"}`);
       console.log(`Lived: ${result.firstSeen.date} → ${lastDate}\n`);
 
       if (result.status === "deleted" && result.deletionCommit) {
-        console.log(" Deleted in commit:");
+        console.log("☠️ Deleted in commit:");
         console.log(
           `- ${result.deletionCommit.hash.slice(0, 7)} "${result.deletionCommit.message}"`
         );
@@ -206,9 +206,47 @@ program
 program
   .command("blame-smart <question>")
   .description("Investigate why something behaves the way it does")
-  .action((question) => {
-    console.log(` Investigating: ${question}`);
-    console.log(" Not implemented yet");
+  .action(async (question) => {
+    console.log(`Investigating: ${question}\n`);
+
+    try {
+      const git = simpleGit();
+
+      // Get recent commits for context
+      const log = await git.log({ maxCount: 10 });
+
+      const commitSummary = log.all
+        .map(
+          (c) =>
+            `- ${c.hash.slice(0, 7)} | ${c.date} | ${c.message}`
+        )
+        .join("\n");
+
+      const prompt = `
+You are a senior engineer investigating unexpected behavior in a codebase.
+
+A developer asked:
+"${question}"
+
+Here are the 10 most recent commits for context:
+
+${commitSummary}
+
+Based on this information:
+- Suggest likely causes
+- Identify architectural patterns that might explain this
+- Mention possible retry logic, middleware, or framework defaults
+- Be practical and clear
+      `.trim();
+
+      const response = await askCopilot(prompt);
+
+      console.log(response);
+    } catch (err: any) {
+      console.error(" Investigation failed:");
+      console.error(err.message);
+    }
   });
+
 
 program.parse();
