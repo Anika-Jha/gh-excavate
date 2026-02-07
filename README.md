@@ -50,13 +50,15 @@ gh excavate --help
 
 ### Analyze a local folder
 Analyze an entire local directory to understand its purpose, architecture, and potential risks.
+-if inside root folder use src, else ./src
 ```bash
-gh excavate dig ./src
+gh excavate dig src
 ```
+
 ### Analyze a local folder with gentle roast mode
 Same analysis but with light, constructive criticism enabled.
 ```bash
-gh excavate dig ./src --roast
+gh excavate dig src --roast
 ```
 ### Analyze a remote GitHub repository
 Clone a public GitHub repository temporarily and analyze its structure and intent.
