@@ -2,7 +2,7 @@
 
 **Understand any codebase you didn’t write, quickly.**
 
-`gh-excavate` is a TypeScript-based CLI tool that helps developers analyze both local and remote code repositories. Using **GitHub Copilot**, it performs "code archaeology" by inspecting files, folders, or entire repos to uncover the **intent, history, design decisions, and potential risks** behind the code.
+`gh-excavate` is a TypeScript-based CLI tool that helps developers analyze both local and remote code repositories. Using **GitHub Copilot**, it performs "code archaeology" by inspecting files, folders, or entire repos to uncover the intent, history, design decisions, and potential risks** behind the code.
 ---
 
 ## Features
@@ -13,22 +13,6 @@
 - Investigate mysterious code behavior (planned)
 - Supports **local paths** or **GitHub repos** (`owner/repo[:path]`)
 - Provides optional **gentle roast mode** for a humorous code review
----
-
-## Project Structure
-
-gh-excavate/
-├─ src/
-│  ├─ gh-excavate.ts       # CLI entry point
-│  └─ utils/
-│     ├─ copilot.ts         # GitHub Copilot integration
-│     ├─ fs.ts              # File reading utilities
-│     ├─ git.ts             # Git utilities
-│     ├─ remote.ts          # Handles cloning GitHub repos
-│     └─ relic.ts           # File lifecycle analysis
-├─ package.json
-├─ tsconfig.json
-└─ README.md
 ---
 
 ## Installation
