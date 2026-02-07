@@ -5,6 +5,7 @@
 `gh-excavate` is a TypeScript-based GitHub CLI extension built for code archaeology. It analyzes local and remote repositories using Git metadata, structural inspection, and GitHub Copilot to uncover the intent, evolution, design decisions, and potential risks behind a codebase.
 
 Instead of manually scanning commits and stitching context together, `gh-excavate` synthesizes it for you directly in your terminal.
+
 ---
 
 ## Features
