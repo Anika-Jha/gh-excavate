@@ -54,17 +54,22 @@ Analyze an entire local directory to understand its purpose, architecture, and p
 ```bash
 gh excavate dig src
 ```
+<img width="1091" height="344" alt="dig_src_1" src="https://github.com/user-attachments/assets/707acd45-bf59-4da4-b568-e1af374e06e9" />
 
 ### Analyze a local folder with gentle roast mode
 Same analysis but with light, constructive criticism enabled.
 ```bash
 gh excavate dig src --roast
 ```
+<img width="1091" height="133" alt="dig_src_2" src="https://github.com/user-attachments/assets/9e96dd58-cef1-41c8-95d0-6d867b11a0a4" />
+
 ### Analyze a remote GitHub repository
 Clone a public GitHub repository temporarily and analyze its structure and intent.
 ```bash
 gh excavate dig owner/repo
 ```
+[remote_repo.zip](https://github.com/user-attachments/files/25153495/remote_repo.zip)
+
 ### Analyze a specific file in a GitHub repository
 Target a single file inside a repository.
 ```bash
@@ -75,16 +80,22 @@ See when a file was created, last modified, and how it evolved.
 ```bash
 gh excavate relic src/utils/git.ts
 ```
+<img width="503" height="66" alt="relic" src="https://github.com/user-attachments/assets/4821836c-9499-4bb0-8f80-24eb818446c0" />
+
 ### Detect likely dead code
 Check whether a file appears unused based on git activity.
 ```bash
 gh excavate should-this-exist src/old-helper.ts
 ```
+<img width="503" height="75" alt="should_this_exist" src="https://github.com/user-attachments/assets/2c30183f-6a54-4cb4-bc19-9ca3289e54b5" />
+
 ### Ask a contextual blame question (experimental)
 Investigate why something behaves a certain way.
 ```bash
 gh excavate blame-smart "Why does this service retry three times?"
 ```
+<img width="940" height="634" alt="investigate" src="https://github.com/user-attachments/assets/69d82219-287c-406c-bb5a-6caaeb8de4ed" />
+
 ---
 
 ## Commands
