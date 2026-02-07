@@ -1,18 +1,21 @@
 # gh-excavate
 
-**Understand any codebase you didn’t write, quickly.**
+**Understand any codebase you didn’t write : quickly and intelligently**
 
-`gh-excavate` is a TypeScript-based CLI tool that helps developers analyze both local and remote code repositories. Using **GitHub Copilot**, it performs "code archaeology" by inspecting files, folders, or entire repos to uncover the intent, history, design decisions, and potential risks** behind the code.
+`gh-excavate` is a TypeScript-based GitHub CLI extension built for code archaeology. It analyzes local and remote repositories using Git metadata, structural inspection, and GitHub Copilot to uncover the intent, evolution, design decisions, and potential risks behind a codebase.
+
+Instead of manually scanning commits and stitching context together, `gh-excavate` synthesizes it for you directly in your terminal.
 ---
 
 ## Features
 
-- Analyze a file or folder to understand purpose, risks, and design decisions
+- Analyze a file, folder, or entire repository to infer purpose and architecture 
 - Trace the life of a file from creation to deletion
-- Detect likely dead code
+- Detect potentially dead or abandoned code
 - Investigate mysterious code behavior (planned)
+- Surface design smells and structural risks
 - Supports **local paths** or **GitHub repos** (`owner/repo[:path]`)
-- Provides optional **gentle roast mode** for a humorous code review
+- Optional gentle roast mode for a humorous but insightful code critique
 ---
 
 ## Installation
@@ -143,8 +146,8 @@ gh excavate blame-smart "Why does this service retry three times?"
 
 ## Notes
 
-- Large repositories may take a few minutes to clone and analyze.
-- Ensure GitHub CLI is installed and authenticated.
-- Copilot requires a valid GitHub subscription and API access.
-- Temporary clones are automatically removed after execution.
+- Performance depends on repository size and network conditions.
+- Requires GitHub CLI (gh) authentication.
+- Requires access to GitHub Copilot CLI.
+- Remote repositories are cloned into temporary directories and safely removed after analysis.
 
